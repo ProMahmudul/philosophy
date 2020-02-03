@@ -14,6 +14,8 @@ function philosophy_theme_setup() {
 	add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form' ) );
 	add_theme_support( 'post-formats', array( 'image', 'gallery', 'quote', 'audio', 'video', 'link' ) );
 	add_editor_style( '/assets/css/editor-style.css' );
+
+	register_nav_menu( 'topmenu', __('Top Menu', 'philosophy'));
 }
 add_action( 'after_setup_theme', 'philosophy_theme_setup' );
 
