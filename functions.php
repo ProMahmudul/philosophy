@@ -1,5 +1,7 @@
 <?php
 
+require_once(get_theme_file_path('/inc/tgm.php'));
+
 // Theme script and stylesheet cache busting
 if ( site_url() == 'http://localhost/wp/learning' ) {
 	define( 'VERSION', time() );
