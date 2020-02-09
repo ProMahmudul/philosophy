@@ -1,6 +1,7 @@
 <?php
 
 require_once get_theme_file_path( '/inc/tgm.php' );
+require_once get_theme_file_path( '/inc/attachments.php' );
 
 // Theme script and stylesheet cache busting
 if ( site_url() == 'http://localhost/wp/learning' ) {
