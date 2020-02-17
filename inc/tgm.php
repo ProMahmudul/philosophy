@@ -61,15 +61,27 @@ function philosophy_register_required_plugins() {
 
 		// This is an example of how to include a plugin from the WordPress Plugin Repository.
 		array(
-			'name'      => 'Advanced Custom Fields',
-			'slug'      => 'advanced-custom-fields',
-			'required'  => false,
+			'name'     => 'Advanced Custom Fields',
+			'slug'     => 'advanced-custom-fields',
+			'required' => false,
 		),
 
 		array(
-			'name'      => 'Attachments',
-			'slug'      => 'attachments',
-			'required'  => false,
+			'name'     => 'Attachments',
+			'slug'     => 'attachments',
+			'required' => false,
+		),
+
+		array(
+			'name'     => 'WP Google Maps',
+			'slug'     => 'wp-google-maps',
+			'required' => false,
+		),
+
+		array(
+			'name'     => 'Contact Form 7',
+			'slug'     => 'contact-form-7',
+			'required' => false,
 		),
 	);
 
