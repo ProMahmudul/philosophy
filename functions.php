@@ -179,10 +179,21 @@ FORM;
 }
 add_filter( 'get_search_form', 'philosophy_search_form' );
 
-function category_before_title() {
-	echo '<p>Before Title</p>';
+function category_before_title1() {
+	echo '<p>Before Title 1</p>';
 }
-add_action( 'philosophy_before_category_title', 'category_before_title' );
+add_action( 'philosophy_before_category_title', 'category_before_title1' );
+
+function category_before_title2() {
+	echo '<p>Before Title 2</p>';
+}
+add_action( 'philosophy_before_category_title', 'category_before_title2', 11 );
+
+function category_before_title3() {
+	echo '<p>Before Title 3</p>';
+}
+add_action( 'philosophy_before_category_title', 'category_before_title3', 8 );
+
 
 function category_after_title() {
 	echo '<p>After Title</p>';
