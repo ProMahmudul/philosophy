@@ -5,6 +5,7 @@
 	<section class="s-content">
 		<div class="row narrow">
 			<div class="col-full s-content__header" data-aos="fade-up">
+			<?php echo apply_filters( 'philosophy_text', 'hello', 'Wonderful', 'world' ); ?>
 				<?php do_action( 'philosophy_before_category_title' ); ?>
 				<h1>
 				<?php
@@ -29,12 +30,12 @@
 					?>
 					<h5><?php esc_html_e( 'There is no post in this category.', 'philosophy' ); ?></h5>
 					<?php
-			endif;
+		  endif;
 				?>
 
 				<?php
 				while ( have_posts() ) {
-					the_post();
+					 the_post();
 					get_template_part( 'template-parts/post-formats/post', get_post_format() );
 				}
 				?>
