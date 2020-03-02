@@ -4,6 +4,10 @@ require_once get_theme_file_path( '/inc/tgm.php' );
 require_once get_theme_file_path( '/inc/attachments.php' );
 require_once get_theme_file_path( '/widgets/social-icons-widget.php' );
 
+if ( ! isset( $content_width ) ) {
+	$content_width = 960;
+}
+
 // Theme script and stylesheet cache busting
 if ( site_url() == 'http://localhost/wp/learning' ) {
 	define( 'VERSION', time() );
@@ -15,6 +19,7 @@ function philosophy_theme_setup() {
 	load_theme_textdomain( 'philosophy' );
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'title-tag' );
+	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 'custom-logo' );
 	add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form' ) );
 	add_theme_support( 'post-formats', array( 'image', 'gallery', 'quote', 'audio', 'video', 'link' ) );
@@ -43,6 +48,9 @@ function philosophy_assets() {
 	wp_enqueue_script( 'modernizr-js', get_theme_file_uri( 'assets/js/modernizr.js' ), null, '1.0' );
 	wp_enqueue_script( 'pace-js', get_theme_file_uri( 'assets/js/pace.min.js' ), null, '1.0' );
 	wp_enqueue_script( 'plugins-js', get_theme_file_uri( 'assets/js/plugins.js' ), array( 'jquery' ), '1.0', true );
+	if ( is_singular() ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
 	wp_enqueue_script( 'main-js', get_theme_file_uri( 'assets/js/main.js' ), array( 'jquery' ), '1.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'philosophy_assets' );
@@ -62,7 +70,7 @@ function philosophy_pagination() {
 	$links = str_replace( "<ul class='pgn__num'>", '<ul>', $links );
 	$links = str_replace( 'next pgn__num', 'pgn__next', $links );
 	$links = str_replace( 'prev pgn__num', 'pgn__prev', $links );
-	echo $links;
+	echo wp_kses_post( $links );
 }
 
 remove_action( 'term_description', 'wpautop' );

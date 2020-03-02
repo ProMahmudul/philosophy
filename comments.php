@@ -7,9 +7,9 @@
 						<?php
 						$philosophy_co = get_comments_number();
 						if ( $philosophy_co <= 1 ) {
-							echo $philosophy_co . ' ' . __( 'Comment', 'philosophy' );
+							echo esc_html( $philosophy_co ) . ' ' . __( 'Comment', 'philosophy' );
 						} else {
-							echo $philosophy_co . ' ' . __( 'Comments', 'philosophy' );
+							echo esc_html( $philosophy_co ) . ' ' . __( 'Comments', 'philosophy' );
 						}
 						?>
 					</h3>

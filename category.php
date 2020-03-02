@@ -6,7 +6,7 @@
 			<div class="col-full s-content__header" data-aos="fade-up">
 				<h1>
 				<?php
-				esc_html_e( 'Category: ' );
+				esc_html_e( 'Category: ', 'philosophy' );
 				single_cat_title();
 				?>
 				</h1>
@@ -21,7 +21,7 @@
 				<?php
 				if ( ! have_posts() ) :
 					?>
-					<h5><?php esc_html_e( 'There is no post in this category.' ); ?></h5>
+					<h5><?php esc_html_e( 'There is no post in this category.', 'philosophy' ); ?></h5>
 					<?php
 				endif;
 				?>
