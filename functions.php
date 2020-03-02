@@ -205,6 +205,12 @@ function category_after_desc() {
 }
 add_action( 'philosophy_after_category_description', 'category_after_desc' );
 
+remove_action( 'philosophy_before_category_title', 'category_before_title1' );
+remove_action( 'philosophy_before_category_title', 'category_before_title2', 11 );
+remove_action( 'philosophy_before_category_title', 'category_before_title3', 8 );
+remove_action( 'philosophy_after_category_title', 'category_after_title' );
+remove_action( 'philosophy_after_category_description', 'category_after_desc' );
+
 function beginning_category_page( $category_title ) {
 	if ( 'New' == $category_title ) {
 		$visit_count = get_option( 'category_new' );
