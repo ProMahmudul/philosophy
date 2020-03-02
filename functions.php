@@ -55,22 +55,23 @@ function philosophy_assets() {
 }
 add_action( 'wp_enqueue_scripts', 'philosophy_assets' );
 
-
-function philosophy_pagination() {
-	global $wp_query;
-	$links = paginate_links(
-		array(
-			'current'  => max( 1, get_query_var( 'paged' ) ),
-			'total'    => $wp_query->max_num_pages,
-			'type'     => 'list',
-			'mid_size' => apply_filters( 'philosophy_pagination_mid_size', 3 ),
-		)
-	);
-	$links = str_replace( 'page-numbers', 'pgn__num', $links );
-	$links = str_replace( "<ul class='pgn__num'>", '<ul>', $links );
-	$links = str_replace( 'next pgn__num', 'pgn__next', $links );
-	$links = str_replace( 'prev pgn__num', 'pgn__prev', $links );
-	echo wp_kses_post( $links );
+if ( ! function_exists( 'philosophy_pagination' ) ) {
+	function philosophy_pagination() {
+		global $wp_query;
+		$links = paginate_links(
+			array(
+				'current'  => max( 1, get_query_var( 'paged' ) ),
+				'total'    => $wp_query->max_num_pages,
+				'type'     => 'list',
+				'mid_size' => apply_filters( 'philosophy_pagination_mid_size', 3 ),
+			)
+		);
+		$links = str_replace( 'page-numbers', 'pgn__num', $links );
+		$links = str_replace( "<ul class='pgn__num'>", '<ul>', $links );
+		$links = str_replace( 'next pgn__num', 'pgn__next', $links );
+		$links = str_replace( 'prev pgn__num', 'pgn__prev', $links );
+		echo wp_kses_post( $links );
+	}
 }
 
 remove_action( 'term_description', 'wpautop' );
@@ -177,6 +178,7 @@ function philosophy_search_form( $form ) {
 FORM;
 	return $newform;
 }
+
 add_filter( 'get_search_form', 'philosophy_search_form' );
 
 function category_before_title1() {
