@@ -7,6 +7,9 @@
 			<div class="col-full s-content__header" data-aos="fade-up">
 			<?php // echo apply_filters( 'philosophy_text', 'hello', 'Wonderful', 'world' ); ?>
 				<?php do_action( 'philosophy_before_category_title' ); ?>
+				<h2><?php _e( 'New Translatable Text', 'philosophy' ); ?></h2>
+				<h2><?php _e( 'Hello World', 'philosophy' ); ?></h2>
+				<h2><?php printf( __( '%s Hello World', 'philosophy' ), 'Hi, ' ); ?></h2>
 				<h1>
 				<?php
 				esc_html_e( 'Category: ', 'philosophy' );
