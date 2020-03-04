@@ -246,3 +246,23 @@ function uppercase_text( $param1, $param2, $param3 ) {
 	return ucwords( $param1 ) . ' ' . strtoupper( $param2 ) . '' . strtolower( $param3 );
 }
 add_filter( 'philosophy_text', 'uppercase_text', 10, 3 );
+
+function philosophy_greeting_shortcode() {
+	return 'Assalamualaikum!';
+}
+add_shortcode( 'greeting', 'philosophy_greeting_shortcode' );
+
+function philosophy_advanced_shortcode( $atts, $content = null ) {
+	$atts = shortcode_atts(
+		array(
+			'size'  => 25,
+			'color' => '#222222',
+			'bg'    => '#d3d3d3',
+		),
+		$atts,
+		'advanced_shortcode'
+	);
+	extract( $atts );
+	return '<h1 style="font-size:' . $size . 'px; color:' . $color . '; background: ' . $bg . ';">' . $content . '</h1>';
+}
+add_shortcode( 'advanced_shortcode', 'philosophy_advanced_shortcode' );
