@@ -167,17 +167,17 @@ function philosophy_search_form( $form ) {
 	$homedir      = home_url( '/' );
 	$label        = esc_html_e( 'Search for:', 'philosophy' );
 	$button_label = esc_html_e( 'Search', 'philosophy' );
-	$post_type = <<<PT
+	$post_type    = <<<PT
 	<input type="hidden" name="post_type" value="post">
 	PT;
 
-	if(is_post_type_archive('book')){
+	if ( is_post_type_archive( 'book' ) ) {
 		$post_type = <<<PT
 		<input type="hidden" name="post_type" value="book">
 		PT;
 	}
 
-	$newform      = <<<FORM
+	$newform = <<<FORM
 	<form role="search" method="get" class="header__search-form" action="{$homedir}">
 		<label>
 			<span class="hide-content">{$label}</span>
@@ -258,6 +258,28 @@ function uppercase_text( $param1, $param2, $param3 ) {
 }
 add_filter( 'philosophy_text', 'uppercase_text', 10, 3 );
 
+/**
+ * Post Type permalink change / URL rewrite
+ *
+ * @param string $post_link
+ * @param int    $id
+ * @return void
+ */
+function philosophy_cpt_slug_fix( $post_link, $id ) {
+	$p = get_post( $id );
+	if ( is_object( $p ) && 'chapter' == get_post_type( $id ) ) {
+		$parent_post_id = get_field( 'parent_book' );
+		$parent_post    = get_post( $parent_post_id );
+		if ( $parent_post ) {
+			$post_link = str_replace( '%book%', $parent_post->post_name, $post_link );
+		}
+		return $post_link;
+	}
+}
+add_filter( 'post_type_link', 'philosophy_cpt_slug_fix', 1, 2 );
+
+
+
 function philosophy_greeting_shortcode() {
 	return 'Assalamualaikum!';
 }
@@ -277,3 +299,4 @@ function philosophy_advanced_shortcode( $atts, $content = null ) {
 	return '<h1 style="font-size:' . $size . 'px; color:' . $color . '; background: ' . $bg . ';">' . $content . '</h1>';
 }
 add_shortcode( 'advanced_shortcode', 'philosophy_advanced_shortcode' );
+
