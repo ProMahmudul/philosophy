@@ -273,8 +273,8 @@ function philosophy_cpt_slug_fix( $post_link, $id ) {
 		if ( $parent_post ) {
 			$post_link = str_replace( '%book%', $parent_post->post_name, $post_link );
 		}
-		return $post_link;
 	}
+	return $post_link;
 }
 add_filter( 'post_type_link', 'philosophy_cpt_slug_fix', 1, 2 );
 
