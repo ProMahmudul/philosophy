@@ -53,6 +53,18 @@
 
 					printf( '<a href="%s">%s</a></br>', $philosophy_chl, $philosophy_cht );
 				}
+				wp_reset_query();
+
+				echo '<h3>';
+				_e( 'Chapters', 'philosophy' );
+				echo '</h3>';
+
+				$philosophy_cmb2_chapters = get_post_meta( get_the_ID(), 'attached_cmb2_attached_posts', true );
+				foreach ( $philosophy_cmb2_chapters as $pch ) {
+					$philosophy_chl = get_the_permalink( $pch );
+					$philosophy_cht = get_the_title( $pch );
+					printf( '<a href="%s">%s</a><br>', $philosophy_chl, $philosophy_cht );
+				}
 				?>
 
 				<p class="s-content__tags">
