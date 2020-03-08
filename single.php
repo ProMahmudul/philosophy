@@ -41,7 +41,7 @@
 					<span class="s-content__tag-list">
 						<?php
 							echo get_the_tag_list();
-							// the_tags();
+							// the_tags( '', '', '' );
 						?>
 					</span>
 				</p> <!-- end s-content__tags -->
